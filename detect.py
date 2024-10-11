@@ -151,6 +151,9 @@ def main(params):
                 p_pred_deg = euler[:, 0].cpu()
                 y_pred_deg = euler[:, 1].cpu()
                 r_pred_deg = euler[:, 2].cpu()
+                # save pitch, yaw, roll as text file per frame
+                with open('head_pose_output.txt', 'a') as f:
+                    f.write(f"{p_pred_deg.item():.2f} {y_pred_deg.item():.2f} {r_pred_deg.item():.2f}\n")
 
                 if args.draw_type == "cube":
                     draw_cube(

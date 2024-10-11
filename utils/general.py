@@ -27,6 +27,10 @@ def draw_cube(image: np.ndarray, yaw: float, pitch: float, roll: float, bbox: Li
         size (float, optional): Size of the cube. Defaults to 150.
     """
     # Convert angles from degrees to radians
+    yaw = yaw.item() if isinstance(yaw, torch.Tensor) else yaw
+    pitch = pitch.item() if isinstance(pitch, torch.Tensor) else pitch
+    roll = roll.item() if isinstance(roll, torch.Tensor) else roll
+    
     yaw, pitch, roll = np.radians([-yaw, pitch, roll])
 
     # Bounding box calculations
